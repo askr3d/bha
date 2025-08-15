@@ -1,0 +1,71 @@
+body {
+	overflow: hidden;
+	background: #000000;
+}
+
+.banner{
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.banner .slider{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 10%;
+    left: calc(50% - 100px);
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 20s linear infinite;
+}
+
+    @keyframes autoRun{
+        from{
+            transform: perspective(1000px) rotateX(-5deg) rotateY(0deg);
+        }
+        to{
+            transform: perspective(1000px) rotateX(-5deg) rotateY(360deg);
+        }
+    }
+
+.banner .slider .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    transform:
+        rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+        translateZ(550px);
+}
+
+.banner .slider .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hba-container{
+    position: absolute;
+    bottom: 5vh;
+    width: 100%;
+    text-align: center;
+}
+
+    .hba-message{
+        font-size: 5rem;
+        background: linear-gradient(to right,
+            #fc72ff, #8f68ff, #487bff,
+            #8f68ff, #fc72ff);
+        background-size: 200%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: animate-gradient 2.5s linear infinite;
+    }
+
+    @keyframes animate-gradient{
+        to {
+            background-position: 200%;
+        }
+    }
